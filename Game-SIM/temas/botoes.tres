@@ -1,0 +1,24 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c8ppqcnl2aavw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgt34"]
+bg_color = Color(0.384314, 0.678431, 0.411765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cou2b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkgnl"]
+bg_color = Color(0.265656, 0.492678, 0.287659, 1)
+
+[sub_resource type="FontFile" id="FontFile_8qa3j"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[resource]
+default_font = SubResource("FontFile_8qa3j")
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_qgt34")
+Button/styles/normal = SubResource("StyleBoxFlat_cou2b")
+Button/styles/pressed = SubResource("StyleBoxFlat_pkgnl")
