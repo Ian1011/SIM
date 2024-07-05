@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://wtw62uykpl6t"]
+
+[ext_resource type="PackedScene" uid="uid://d2ckya8jei53n" path="res://management/enemy_template.tscn" id="1_s3b8y"]
+[ext_resource type="Texture2D" uid="uid://b4juwlllhn12j" path="res://sprites/enemys/howl.png" id="2_w1mi4"]
+
+[node name="Howl" instance=ExtResource("1_s3b8y")]
+_enemy_type = "line"
+_health_points = 10
+_damage = 20
+_invencibility_cooldown = 1.0
+_move_speed = 250.0
+
+[node name="Texture" parent="." index="0"]
+texture = ExtResource("2_w1mi4")
+
+[node name="Collision" parent="." index="1"]
+position = Vector2(2, 12)
+
+[node name="HitboxLimit" parent="HitboxArea" index="0"]
+position = Vector2(2, 12)

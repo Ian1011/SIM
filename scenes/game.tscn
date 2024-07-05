@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://jn6trih71jgp"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_qwj8h"]
+[ext_resource type="PackedScene" uid="uid://d1rqp0thd7ecj" path="res://scenes/hero.tscn" id="2_hc7v8"]
+[ext_resource type="AudioStream" uid="uid://c4gfhu0d6v8kv" path="res://musics/theme1.mp3" id="3_gl5qd"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_qwj8h")
+
+[node name="Hero" parent="." instance=ExtResource("2_hc7v8")]
+_health = 200.0
+
+[node name="TimerSpawn" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gl5qd")
+
+[connection signal="timeout" from="TimerSpawn" to="." method="_on_timer_spawn_timeout"]
+[connection signal="finished" from="Theme" to="." method="_on_audio_stream_player_finished"]

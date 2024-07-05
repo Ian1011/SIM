@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2ckya8jei53n"]
+
+[ext_resource type="Script" path="res://management/enemy_template.gd" id="1_acwfl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7yt0n"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4265s"]
+radius = 18.0
+
+[node name="EnemyTemplate" type="CharacterBody2D" node_paths=PackedStringArray("_invencibility_timer", "_timer_delete", "_hitbox_area") groups=["enemy"]]
+collision_layer = 4
+script = ExtResource("1_acwfl")
+_move_speed = 60.0
+_invencibility_timer = NodePath("HitboxArea/InvencibilityTimer")
+_timer_delete = NodePath("TimerDelete")
+_hitbox_area = NodePath("HitboxArea")
+
+[node name="Texture" type="Sprite2D" parent="." groups=["enemy"]]
+
+[node name="Collision" type="CollisionShape2D" parent="." groups=["enemy"]]
+shape = SubResource("CircleShape2D_7yt0n")
+
+[node name="HitboxArea" type="Area2D" parent="."]
+
+[node name="HitboxLimit" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("CircleShape2D_4265s")
+
+[node name="InvencibilityTimer" type="Timer" parent="HitboxArea"]
+one_shot = true
+
+[node name="TimerDelete" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="VisibleOnScreen" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="HitboxArea" to="." method="_on_hitbox_area_body_entered"]
+[connection signal="timeout" from="HitboxArea/InvencibilityTimer" to="." method="_on_invencibility_timer_timeout"]
+[connection signal="timeout" from="TimerDelete" to="." method="_on_timer_delete_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreen" to="." method="_on_visible_on_screen_screen_exited"]
