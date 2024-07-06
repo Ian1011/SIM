@@ -11,11 +11,7 @@ func _physics_process(delta):
 		match _enemy_type:
 			'normal':
 				normal(_direction)
-			
-		
 		move_and_collide(_velocity * delta)
-
-
 
 func normal(_direction: Vector2):
 	_velocity = _direction * _move_speed

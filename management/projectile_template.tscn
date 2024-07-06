@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://copew38gkd8w"]
+
+[ext_resource type="Script" path="res://scripts/skull-ball.gd" id="1_28kmj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1odd4"]
+
+[node name="ProjectileTemplate" type="Area2D" node_paths=PackedStringArray("_timer_delete")]
+scale = Vector2(1.2, 1.2)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_28kmj")
+_timer_delete = NodePath("TimerDelete")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 0)
+shape = SubResource("CircleShape2D_1odd4")
+
+[node name="TimerDelete" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="TimerDelete" to="." method="_on_timer_delete_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,88 +1,32 @@
-[gd_scene load_steps=7 format=3 uid="uid://egb206mqee4a"]
+[gd_scene load_steps=6 format=3 uid="uid://egb206mqee4a"]
 
 [ext_resource type="Texture2D" uid="uid://ch5gmvb0s070m" path="res://sprites/weapons/skull-ball.png" id="1_ebhpw"]
+[ext_resource type="PackedScene" uid="uid://copew38gkd8w" path="res://management/projectile_template.tscn" id="1_r00ns"]
 
-[sub_resource type="GDScript" id="GDScript_7owkf"]
-script/source = "extends Area2D
-
-var direction: Vector2
-var is_delete: bool = false
-
-@export_category(\"Variabels\")
-@export var _damage: float = 10
-@export var _move_speed: float = 300
-
-@export_category('Objects')
-@export var _timer_delete: Timer
-
-func _ready():
-	rotation = direction.angle()
-
-func _physics_process(delta):
-	translate(direction * delta * _move_speed)
-
-func _on_area_2d_body_entered(body):
-	if body is Enemy:
-		print(\"Alvo abatido\")
-		body._update_health('damage', _damage)
-		queue_free()
-
-
-func _on_timer_delete_timeout():
-	if is_delete:
-		queue_free()
-
-
-func _on_visible_on_screen_notifier_2d_screen_exited():
-	is_delete = true
-	_timer_delete.start()
-"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qthqa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2spm"]
 atlas = ExtResource("1_ebhpw")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6vmbr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_va0p7"]
 atlas = ExtResource("1_ebhpw")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_q2a7s"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_p4jlj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qthqa")
+"texture": SubResource("AtlasTexture_p2spm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6vmbr")
+"texture": SubResource("AtlasTexture_va0p7")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1odd4"]
+[node name="SkullBall" instance=ExtResource("1_r00ns")]
 
-[node name="Skull-ball" type="Area2D" node_paths=PackedStringArray("_timer_delete")]
-scale = Vector2(1.2, 1.2)
-collision_layer = 2
-collision_mask = 4
-script = SubResource("GDScript_7owkf")
-_timer_delete = NodePath("TimerDelete")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_q2a7s")
-autoplay = "default"
-frame_progress = 0.833577
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 0)
-shape = SubResource("CircleShape2D_1odd4")
-
-[node name="TimerDelete" type="Timer" parent="."]
-wait_time = 2.5
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-
-[connection signal="body_entered" from="." to="." method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="TimerDelete" to="." method="_on_timer_delete_timeout"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_p4jlj")
+frame_progress = 0.360178

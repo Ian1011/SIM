@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1rqp0thd7ecj"]
+[gd_scene load_steps=9 format=3 uid="uid://d1rqp0thd7ecj"]
 
 [ext_resource type="Script" path="res://scripts/hero.gd" id="1_tlnba"]
 [ext_resource type="Texture2D" uid="uid://dpekok6mnsmsy" path="res://sprites/hero.png" id="2_jigcs"]
 [ext_resource type="Texture2D" uid="uid://c5fgugt6fc3q0" path="res://sprites/lifebar/lifebar1.png" id="3_jllwb"]
+[ext_resource type="Script" path="res://scripts/hero/control.gd" id="4_khkpc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j8gta"]
 radius = 21.25
+
+[sub_resource type="LabelSettings" id="LabelSettings_fwhfk"]
+font_size = 20
 
 [sub_resource type="FontVariation" id="FontVariation_6dedh"]
 
@@ -17,9 +21,6 @@ font_size = 26
 [node name="Hero" type="CharacterBody2D" groups=["Hero"]]
 collision_mask = 12
 script = ExtResource("1_tlnba")
-_level = null
-_health = null
-_speed = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Hero"]]
 scale = Vector2(0.35, 0.348)
@@ -83,21 +84,59 @@ position = Vector2(-80, 80)
 [node name="Skull4" type="Marker2D" parent="SkullPosition"]
 position = Vector2(80, 80)
 
-[node name="LifeBar" type="Sprite2D" parent="."]
-position = Vector2(-547, 290)
-scale = Vector2(1, 0.833333)
-texture = ExtResource("3_jllwb")
-region_enabled = true
-region_rect = Rect2(10, 3, 160, 73)
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_right = 28.0
+offset_bottom = 34.0
+script = ExtResource("4_khkpc")
 
-[node name="Hp" type="Label" parent="."]
-offset_left = -622.0
-offset_top = 318.0
-offset_right = -457.0
-offset_bottom = 341.0
+[node name="TimerCounter" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = -73.0
+offset_top = -361.0
+offset_right = 73.0
+offset_bottom = -367.0
+grow_vertical = 2
+text = "00:00"
+label_settings = SubResource("LabelSettings_fwhfk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hp" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -632.0
+offset_top = 326.0
+offset_right = -467.0
+offset_bottom = 362.0
 text = "0/0"
 label_settings = SubResource("LabelSettings_owxtt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ClockTimer" type="Timer" parent="."]
+[node name="Level" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 328.0
+offset_right = 690.0
+offset_bottom = 364.0
+text = "Lv. 1
+"
+label_settings = SubResource("LabelSettings_owxtt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LifeBar" type="Sprite2D" parent="Control"]
+position = Vector2(-559, 304)
+scale = Vector2(1, 0.833333)
+texture = ExtResource("3_jllwb")
+region_enabled = true
+region_rect = Rect2(10, 3, 160, 73)
+
+[node name="ClockTimer" type="Timer" parent="Control"]
+autostart = true
+
+[connection signal="timeout" from="Control/ClockTimer" to="Control" method="_on_clock_timer_timeout"]

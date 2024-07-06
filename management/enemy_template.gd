@@ -9,6 +9,7 @@ var is_attacking = false
 @export var _health_points: int = 20
 @export var _damage: int = 10
 @export var _invencibility_cooldown: float = 0.5
+@export var _experience: int = 10
 @export var _move_speed: float = 100
 
 @export_category('Objects')
@@ -24,6 +25,7 @@ func _ready():
 		if Global.hero:
 			_target = Global.hero
 			line()
+	_update_stats(Global.difficulty_tax)
 
 func _physics_process(delta):
 	if Global.hero:
@@ -49,7 +51,13 @@ func _update_health(damage, points):
 		"damage":
 			self._health_points -= points
 			if self._health_points <= 0:
+				Global.hero._update_level(_experience)
 				queue_free()
+
+func _update_stats(tax):
+	_health_points = _health_points + (_health_points * tax)
+	_damage = _damage + (_damage * tax)
+	_experience = _experience + (_experience * tax)
 
 func _on_timer_delete_timeout():
 	if is_delete:

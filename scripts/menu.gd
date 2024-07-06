@@ -7,9 +7,7 @@ func _on_jogar_bt_pressed():
 
 #aqui eu queria pasa para uma tela que tenha nossa logo e alguns eggs futuros :}
 func _on_sim_bt_pressed():
-	var music = self.get_children()
-	print(music)
-
+	pass
 
 func _on_sair_bt_pressed():
 	get_tree().quit()
