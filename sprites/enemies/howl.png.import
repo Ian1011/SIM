@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bft5fqjhfby71"
-path="res://.godot/imported/ghost.png-99b95172029894184ead56ca7bda6c5a.ctex"
+uid="uid://b4juwlllhn12j"
+path="res://.godot/imported/howl.png-02d63705ef2c0f28713d67f94bc305cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/ghost.png"
-dest_files=["res://.godot/imported/ghost.png-99b95172029894184ead56ca7bda6c5a.ctex"]
+source_file="res://sprites/enemies/howl.png"
+dest_files=["res://.godot/imported/howl.png-02d63705ef2c0f28713d67f94bc305cf.ctex"]
 
 [params]
 
