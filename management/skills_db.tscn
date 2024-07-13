@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://s4r1ootuc0my"]
+
+[ext_resource type="Script" path="res://management/skills_db.gd" id="1_i21tg"]
+
+[node name="SkillsDb" type="Node"]
+script = ExtResource("1_i21tg")

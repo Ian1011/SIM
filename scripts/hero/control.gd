@@ -5,13 +5,24 @@ extends Control
 
 @onready var timer_counter = $TimerCounter
 @onready var life_bar_num = $Hp
-@onready var life_bar = $LifeBar
+@onready var life_bar = $Control/LifeBar
 @onready var level = $Level
 
 var _hero = Global.hero
 var _life_bar_sprites = {}
 var minutes = 0
 var seconds = 0
+
+
+
+func _ready():
+	var viewport_size = get_viewport().size
+	# Posiciona o Control no centro da tela
+	#position = Vector2(viewport_size.x / 2 - size.x / 2, viewport_size.y / 2 - size.y / 2)
+	#var viewport_size = get_viewport().size
+	var aspect_ratio = viewport_size.x / viewport_size.y
+	life_bar.scale = Vector2(aspect_ratio, aspect_ratio)  # ajusta o tamanho do sprite baseado na proporção da tela
+	pass
 
 func start_score():
 	_hero = Global.hero
@@ -34,7 +45,6 @@ func preload_resources():
 func _update_health_counter():
 	life_bar_num.text = str(_hero._health, "/", _hero._health_max)
 	var life_bar_porc: float = _hero._health / _hero._health_max
-	print (life_bar_porc)
 	if life_bar_porc > 0.80:
 		_update_life_bar("100%")
 	elif life_bar_porc > 0.60:

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2bmoeisnumqy"]
+
+[ext_resource type="PackedScene" uid="uid://d2ckya8jei53n" path="res://management/enemy_template.tscn" id="1_o0v7j"]
+[ext_resource type="Texture2D" uid="uid://bcakn880a3h8q" path="res://sprites/enemies/flame.png" id="2_dpjt5"]
+
+[node name="FlameMinion" instance=ExtResource("1_o0v7j")]
+_health_points = 15
+_damage = 20
+_move_speed = 100.0
+
+[node name="Texture" parent="." index="0"]
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("2_dpjt5")
+
+[node name="Collision" parent="." index="1"]
+position = Vector2(5, 5)
+
+[node name="HitboxLimit" parent="HitboxArea" index="0"]
+position = Vector2(5, 5)
+
+[node name="VisibleOnScreen" parent="." index="4"]
+position = Vector2(5, 7)

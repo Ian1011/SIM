@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://ba8rujdn43vsp"]
+
+[ext_resource type="Script" path="res://scripts/hp_item.gd" id="1_q2psv"]
+[ext_resource type="Texture2D" uid="uid://cvl1py6vxmbt3" path="res://sprites/items.png" id="2_00qqi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvev1"]
+size = Vector2(22, 24)
+
+[sub_resource type="Animation" id="Animation_2q7x2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a6knp"]
+resource_name = "collect"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tr4rp"]
+_data = {
+"RESET": SubResource("Animation_2q7x2"),
+"collect": SubResource("Animation_a6knp")
+}
+
+[node name="HpItem" type="Area2D" groups=["loot"]]
+z_index = -1
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_q2psv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.35, 0.334)
+texture = ExtResource("2_00qqi")
+region_enabled = true
+region_rect = Rect2(19, 50, 63, 72)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kvev1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tr4rp")
+}

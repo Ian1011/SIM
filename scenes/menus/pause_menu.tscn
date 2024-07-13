@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://b18pi77colnsb"]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_01qgt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6rul"]
+bg_color = Color(0.266667, 0.494118, 0.286275, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_blfbf"]
+bg_color = Color(0.266667, 0.494118, 0.286275, 1)
+
+[sub_resource type="Theme" id="Theme_spwre"]
+Button/font_sizes/font_size = 32
+Button/styles/hover = SubResource("StyleBoxFlat_c6rul")
+Button/styles/normal = null
+Button/styles/pressed = SubResource("StyleBoxFlat_blfbf")
+
+[sub_resource type="InputEventAction" id="InputEventAction_reogl"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_5g0u5"]
+events = [SubResource("InputEventAction_reogl")]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_01qgt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.254902)
+
+[node name="MenuHolder" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -83.5
+offset_right = 84.0
+offset_bottom = 83.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_spwre")
+
+[node name="ResumeBt" type="Button" parent="MenuHolder"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_5g0u5")
+text = "Continuar"
+
+[node name="InventárioBt" type="Button" parent="MenuHolder"]
+layout_mode = 2
+text = "Inventário"
+
+[node name="SairBt" type="Button" parent="MenuHolder"]
+layout_mode = 2
+text = "Sair
+"
+
+[node name="AreYouSure" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 140.0
+offset_right = 20.0
+offset_bottom = 163.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tem certeza? Seu progresso será perdido."
+
+[connection signal="pressed" from="MenuHolder/ResumeBt" to="." method="_on_resume_bt_pressed"]
+[connection signal="pressed" from="MenuHolder/InventárioBt" to="." method="_on_inventário_bt_pressed"]
+[connection signal="pressed" from="MenuHolder/SairBt" to="." method="_on_sair_bt_pressed"]

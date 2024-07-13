@@ -1,13 +1,17 @@
 extends Control
 #conectar com botão jogar, tem que muda "res://cena_1.tscn" para uma cena que-
 #tenha ai no seu comando
-
+func _ready():
+	get_tree().paused = false
+	
 func _on_jogar_bt_pressed():
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 #aqui eu queria pasa para uma tela que tenha nossa logo e alguns eggs futuros :}
 func _on_sim_bt_pressed():
 	pass
+	get_window().size = Vector2(1920, 1020)
+	get_tree().root.size = Vector2(1920,1020)
 
 func _on_sair_bt_pressed():
 	get_tree().quit()

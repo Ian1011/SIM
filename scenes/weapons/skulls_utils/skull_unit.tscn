@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://rccu3cptf3sx"]
+
+[ext_resource type="PackedScene" uid="uid://cu3swg542hqsv" path="res://management/weapon_template.tscn" id="1_5doar"]
+[ext_resource type="Script" path="res://scripts/skull_unit.gd" id="2_53g67"]
+[ext_resource type="Texture2D" uid="uid://bol2n8wuwx5d4" path="res://sprites/weapons/skull.png" id="3_otcpu"]
+
+[sub_resource type="Animation" id="Animation_pvh1p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(40, 6, 16, 18)]
+}
+
+[sub_resource type="Animation" id="Animation_p13rp"]
+resource_name = "attacking"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_spawn_projetctile"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(40, 6, 16, 18), Rect2(8, 6, 16, 20), Rect2(40, 6, 16, 18)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sfluv"]
+_data = {
+"RESET": SubResource("Animation_pvh1p"),
+"attacking": SubResource("Animation_p13rp")
+}
+
+[node name="Skull" node_paths=PackedStringArray("_animation") instance=ExtResource("1_5doar")]
+script = ExtResource("2_53g67")
+_attack_damage = 10.0
+_attack_cooldown = 2.5
+_animation = NodePath("Animation")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_otcpu")
+
+[node name="Animation" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_sfluv")
+}

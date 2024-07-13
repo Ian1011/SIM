@@ -1,7 +1,10 @@
 extends Node
 class_name global
 
+# Variables
+var game: Game
 var hero: Hero
+var paused_available = true
 var difficulty_tax: float 
 var level: int
 var timer_counter: String

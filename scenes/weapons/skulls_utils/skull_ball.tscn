@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://mn8487ubobpd"]
+
+[ext_resource type="Script" path="res://scripts/skull-ball.gd" id="1_kukyd"]
+[ext_resource type="Texture2D" uid="uid://ch5gmvb0s070m" path="res://sprites/weapons/skull-ball.png" id="2_l4efc"]
+[ext_resource type="Texture2D" uid="uid://dekv6hjmc2moj" path="res://sprites/weapons/skull-ball-explosion.png" id="3_ecx5j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2spm"]
+atlas = ExtResource("2_l4efc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_va0p7"]
+atlas = ExtResource("2_l4efc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oaxb6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2spm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_va0p7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iqllv"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r6fmy"]
+radius = 76.4199
+
+[node name="SkullBall" type="Area2D" node_paths=PackedStringArray("_timer_delete", "_attack_timer", "_attack_area")]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_kukyd")
+_timer_delete = NodePath("TimerDelete")
+_attack_timer = NodePath("AttackArea/AttackTimer")
+_attack_area = NodePath("AttackArea")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_oaxb6")
+autoplay = "default"
+
+[node name="TimerDelete" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Area" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_iqllv")
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_r6fmy")
+
+[node name="SpriteExplosion" type="Sprite2D" parent="AttackArea"]
+z_index = -1
+position = Vector2(0, -5)
+scale = Vector2(0.4, 0.378)
+texture = ExtResource("3_ecx5j")
+
+[node name="AttackTimer" type="Timer" parent="AttackArea"]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="TimerDelete" to="." method="_on_timer_delete_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="timeout" from="AttackArea/AttackTimer" to="." method="_on_attack_timer_timeout"]

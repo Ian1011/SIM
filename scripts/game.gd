@@ -1,36 +1,48 @@
 extends Node2D
+class_name Game
 
 @onready var positions = $Hero/Positions
-@onready var timer = $TimerSpawn
-@onready var player = $Hero
 @onready var theme1 = $Theme
+@onready var level_panel = $LevelUpSelection
+@onready var skills_enabled = $Skills
 
-var difficulty_tax: float = 0
-var enemy_scenes = [preload("res://scenes/enemies/ghost.tscn"), preload("res://scenes/enemies/howl.tscn")]
+@onready var positions_list = positions.get_children()
+
+var game_time = 0.0
+# Const
+# start and end in minutesddddddddd
+const SKILLS_SCENES = {
+	"Skull":preload("res://scenes/weapons/skull.tscn"),
+	"Sword":preload("res://scenes/weapons/sword.tscn")
+}
 
 # Funções Nativas
 func _ready():
-	pass
+	Global.game = self
+	
+func _process(delta):
+	game_time += delta
 
 #Funções
-func spawn_enemy():
-	difficulty_calc()
-	for i in range(difficulty_tax + 2):
-		var player_position = player.position
-		var positions_list = positions.get_children()
-		var spawn_position = positions_list.pick_random()
-		var enemy_instance = enemy_scenes.pick_random()
-		enemy_instance = enemy_instance.instantiate()
-		var new_position = player_position + spawn_position.position
-		enemy_instance.global_position = new_position
-		add_child(enemy_instance)
+func skill_upgrade():
+	var i = 0
+	while i < 3:
+		var skill_sorted = SKILLS_SCENES.keys().pick_random()
+		if not skill_sorted in skills_enabled.skills.keys():
+			skill_sorted = SKILLS_SCENES[skill_sorted].instantiate()
+		elif skill_sorted in skills_enabled.skills.keys():
+			skill_sorted = skills_enabled.skills[str(skill_sorted)]
+			if skill_sorted._level >= 7:
+				continue
+			skill_sorted.enable = true
+		level_panel.update_labels(skill_sorted, i)
+		i += 1
+		
+	level_panel.skill_choose()
+	
+func upgrade_character(item):
+	skills_enabled.update_skill(item)
 
-func difficulty_calc():
-	difficulty_tax = (player.control.minutes / 10) * 1
-	Global.difficulty_tax = difficulty_tax
-
+#Player
 func _on_audio_stream_player_finished():
 	theme1.play()
-
-func _on_timer_spawn_timeout():
-		spawn_enemy()

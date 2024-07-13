@@ -1,2 +1,2 @@
-﻿51600
+﻿60954
 C:/Users/Nai/OneDrive/Área de Trabalho/Godot_v4.2.2-stable_mono_win64/Godot_v4.2.2-stable_mono_win64/Godot_v4.2.2-stable_mono_win64.exe

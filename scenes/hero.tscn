@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1rqp0thd7ecj"]
+[gd_scene load_steps=11 format=3 uid="uid://d1rqp0thd7ecj"]
 
 [ext_resource type="Script" path="res://scripts/hero.gd" id="1_tlnba"]
 [ext_resource type="Texture2D" uid="uid://dpekok6mnsmsy" path="res://sprites/hero.png" id="2_jigcs"]
@@ -18,15 +18,22 @@ line_spacing = 10.0
 font = SubResource("FontVariation_6dedh")
 font_size = 26
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7hfrs"]
+radius = 38.0526
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rw0gy"]
+radius = 70.0643
+
 [node name="Hero" type="CharacterBody2D" groups=["Hero"]]
 collision_mask = 12
 script = ExtResource("1_tlnba")
+_speed = 150.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Hero"]]
 scale = Vector2(0.35, 0.348)
 texture = ExtResource("2_jigcs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Hero"]]
+[node name="Body" type="CollisionShape2D" parent="." groups=["Hero"]]
 position = Vector2(0, -3.25)
 shape = SubResource("CircleShape2D_j8gta")
 
@@ -70,20 +77,6 @@ position = Vector2(-1000, -400)
 [node name="Position12" type="Marker2D" parent="Positions"]
 position = Vector2(-1000, 400)
 
-[node name="SkullPosition" type="Node2D" parent="."]
-
-[node name="Skull1" type="Marker2D" parent="SkullPosition"]
-position = Vector2(-80, -80)
-
-[node name="Skull2" type="Marker2D" parent="SkullPosition"]
-position = Vector2(80, -80)
-
-[node name="Skull3" type="Marker2D" parent="SkullPosition"]
-position = Vector2(-80, 80)
-
-[node name="Skull4" type="Marker2D" parent="SkullPosition"]
-position = Vector2(80, 80)
-
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -116,6 +109,7 @@ text = "0/0"
 label_settings = SubResource("LabelSettings_owxtt")
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Level" type="Label" parent="Control"]
 layout_mode = 0
@@ -129,14 +123,37 @@ label_settings = SubResource("LabelSettings_owxtt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LifeBar" type="Sprite2D" parent="Control"]
+[node name="ClockTimer" type="Timer" parent="Control"]
+autostart = true
+
+[node name="Control" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="LifeBar" type="Sprite2D" parent="Control/Control"]
 position = Vector2(-559, 304)
 scale = Vector2(1, 0.833333)
 texture = ExtResource("3_jllwb")
 region_enabled = true
 region_rect = Rect2(10, 3, 160, 73)
 
-[node name="ClockTimer" type="Timer" parent="Control"]
-autostart = true
+[node name="CollectArea" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+shape = SubResource("CircleShape2D_7hfrs")
+
+[node name="AttractArea" type="Area2D" parent="."]
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttractArea"]
+shape = SubResource("CircleShape2D_rw0gy")
 
 [connection signal="timeout" from="Control/ClockTimer" to="Control" method="_on_clock_timer_timeout"]
+[connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
+[connection signal="area_entered" from="AttractArea" to="." method="_on_attract_area_area_entered"]

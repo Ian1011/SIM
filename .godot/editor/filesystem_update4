@@ -1,2 +1,13 @@
-res://scenes/menus/menu.tscn
+res://scenes/enemies/flame.tscn
 res://temas/botoes.tres
+res://management/enemy_template.gd
+res://scenes/game.tscn
+res://scenes/menus/menu.tscn
+res://management/skills_db.tscn
+res://scenes/hero.tscn
+res://scenes/enemies/ghost.tscn
+res://scenes/enemies/howl.tscn
+res://scenes/weapons/sword.tscn
+res://scenes/enemies/flame_minion.tscn
+res://scripts/game.gd
+res://scripts/enemies.gd

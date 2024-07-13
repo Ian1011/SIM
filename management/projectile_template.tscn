@@ -1,15 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://copew38gkd8w"]
 
-[ext_resource type="Script" path="res://scripts/skull-ball.gd" id="1_28kmj"]
+[ext_resource type="Script" path="res://management/projectile_template.gd" id="1_nlb7x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1odd4"]
 
-[node name="ProjectileTemplate" type="Area2D" node_paths=PackedStringArray("_timer_delete")]
+[node name="ProjectileTemplate" type="Area2D"]
 scale = Vector2(1.2, 1.2)
 collision_layer = 2
 collision_mask = 4
-script = ExtResource("1_28kmj")
-_timer_delete = NodePath("TimerDelete")
+script = ExtResource("1_nlb7x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 autoplay = "default"
