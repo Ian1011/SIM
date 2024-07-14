@@ -8,8 +8,7 @@ script = ExtResource("1_qw7jw")
 [node name="Positions" type="Node2D" parent="."]
 
 [node name="Pos1" type="Marker2D" parent="Positions"]
-position = Vector2(150, 0)
+position = Vector2(40, 0)
 
-[node name="Cooldown" type="Timer" parent="."]
-
-[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
+[node name="Pos2" type="Marker2D" parent="Positions"]
+position = Vector2(-40, 0)

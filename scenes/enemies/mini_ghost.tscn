@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cb2kq7pwn1lq3"]
+
+[ext_resource type="PackedScene" uid="uid://d2ckya8jei53n" path="res://management/enemy_template.tscn" id="1_coxrv"]
+[ext_resource type="Texture2D" uid="uid://sn0ow0je54s4" path="res://sprites/enemies/nai_ghost.png" id="2_gaqqa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y57k"]
+atlas = ExtResource("2_gaqqa")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6lxq"]
+atlas = ExtResource("2_gaqqa")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gp5ar"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0y57k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6lxq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="MiniGhost" instance=ExtResource("1_coxrv")]
+_health_points = 10
+_move_speed = 90.0
+
+[node name="Texture" type="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(1.95, 1.85)
+sprite_frames = SubResource("SpriteFrames_gp5ar")
+autoplay = "default"
+frame_progress = 0.937658

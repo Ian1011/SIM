@@ -10,7 +10,7 @@ class_name Game
 
 var game_time = 0.0
 # Const
-# start and end in minutesddddddddd
+# start and end in minutes
 const SKILLS_SCENES = {
 	"Skull":preload("res://scenes/weapons/skull.tscn"),
 	"Sword":preload("res://scenes/weapons/sword.tscn")

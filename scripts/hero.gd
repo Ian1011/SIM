@@ -8,7 +8,7 @@ class_name Hero
 @export var _health: float = 100
 @export var _speed: float = 90
 
-var initial_skill = preload("res://scenes/weapons/sword.tscn")
+var initial_skill = preload("res://scenes/weapons/skull.tscn")
 
 @export_category('Objects')
 @onready var camera = $Camera
@@ -66,7 +66,6 @@ func _update_health(_damage: String, _points: int):
 #Level
 func _update_level(_experience):
 	_level_experience += _experience
-	print(_level_experience)
 	if _level_experience >= _level_max_experience:
 		_level += 1
 		_level_experience -= _level_max_experience

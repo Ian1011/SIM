@@ -1,25 +1,53 @@
-[gd_scene load_steps=9 format=3 uid="uid://mn8487ubobpd"]
+[gd_scene load_steps=16 format=3 uid="uid://mn8487ubobpd"]
 
 [ext_resource type="Script" path="res://scripts/skull-ball.gd" id="1_kukyd"]
-[ext_resource type="Texture2D" uid="uid://ch5gmvb0s070m" path="res://sprites/weapons/skull-ball.png" id="2_l4efc"]
-[ext_resource type="Texture2D" uid="uid://dekv6hjmc2moj" path="res://sprites/weapons/skull-ball-explosion.png" id="3_ecx5j"]
+[ext_resource type="Texture2D" uid="uid://boyuspdx3d5cx" path="res://sprites/weapons/projetil.png" id="2_f8fbe"]
+[ext_resource type="Texture2D" uid="uid://c221v13cqfjhq" path="res://sprites/weapons/explosão.png" id="3_s2i37"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p2spm"]
-atlas = ExtResource("2_l4efc")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uul1"]
+atlas = ExtResource("2_f8fbe")
+region = Rect2(0, 0, 32, 27)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_va0p7"]
-atlas = ExtResource("2_l4efc")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sojr"]
+atlas = ExtResource("2_f8fbe")
+region = Rect2(32, 0, 32, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p32ig"]
+atlas = ExtResource("2_f8fbe")
+region = Rect2(64, 0, 32, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn6nh"]
+atlas = ExtResource("2_f8fbe")
+region = Rect2(96, 0, 32, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kml06"]
+atlas = ExtResource("2_f8fbe")
+region = Rect2(128, 0, 32, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1pjk"]
+atlas = ExtResource("2_f8fbe")
+region = Rect2(160, 0, 32, 27)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oaxb6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p2spm")
+"texture": SubResource("AtlasTexture_1uul1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_va0p7")
+"texture": SubResource("AtlasTexture_5sojr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p32ig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn6nh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kml06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1pjk")
 }],
 "loop": true,
 "name": &"default",
@@ -27,49 +55,201 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iqllv"]
-radius = 12.0
+radius = 11.0454
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r6fmy"]
-radius = 76.4199
+radius = 86.0058
+
+[sub_resource type="Animation" id="Animation_ctbn8"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteExplosion:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 101, 100, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteExplosion2:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 100, 100)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteExplosion2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpriteExplosion2:region_filter_clip_enabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_g811u"]
+resource_name = "explosion"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteExplosion:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(0, 101, 100, 100), Rect2(100, 100, 100, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteExplosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteExplosion2:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 100, 100), Rect2(100, 0, 92, 100)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpriteExplosion2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpriteExplosion2:region_filter_clip_enabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_06ml1"]
+_data = {
+"RESET": SubResource("Animation_ctbn8"),
+"explosion": SubResource("Animation_g811u")
+}
 
 [node name="SkullBall" type="Area2D" node_paths=PackedStringArray("_timer_delete", "_attack_timer", "_attack_area")]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_kukyd")
 _timer_delete = NodePath("TimerDelete")
-_attack_timer = NodePath("AttackArea/AttackTimer")
+_attack_timer = NodePath("")
 _attack_area = NodePath("AttackArea")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_oaxb6")
 autoplay = "default"
+frame_progress = 0.360971
 
 [node name="TimerDelete" type="Timer" parent="."]
 wait_time = 2.5
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 2.5)
+scale = Vector2(0.8, 0.75)
 
 [node name="Area" type="CollisionShape2D" parent="."]
-position = Vector2(2, 0)
+position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_iqllv")
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_r6fmy")
 
 [node name="SpriteExplosion" type="Sprite2D" parent="AttackArea"]
+visible = false
 z_index = -1
-position = Vector2(0, -5)
-scale = Vector2(0.4, 0.378)
-texture = ExtResource("3_ecx5j")
+position = Vector2(9.53674e-07, 2)
+scale = Vector2(1.75, 1.696)
+texture = ExtResource("2_f8fbe")
+region_enabled = true
+region_rect = Rect2(0, 101, 100, 100)
 
-[node name="AttackTimer" type="Timer" parent="AttackArea"]
+[node name="SpriteExplosion2" type="Sprite2D" parent="AttackArea"]
+z_index = -1
+position = Vector2(9.53674e-07, 2)
+scale = Vector2(1.75, 1.696)
+texture = ExtResource("3_s2i37")
+region_enabled = true
+region_rect = Rect2(0, 0, 100, 100)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AttackArea"]
+libraries = {
+"": SubResource("AnimationLibrary_06ml1")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="TimerDelete" to="." method="_on_timer_delete_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
-[connection signal="timeout" from="AttackArea/AttackTimer" to="." method="_on_attack_timer_timeout"]

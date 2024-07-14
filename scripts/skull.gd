@@ -2,8 +2,8 @@ extends Node2D
 
 var level_up_string: String = "Level_1"
 var _level: int = 1
-var _attack_damage: float = 10
-var _attack_cooldown: float = 3.0
+var _attack_damage: float = 15
+var _attack_cooldown: float = 4.0
 var name_skill: String = "Skull"
 var enable: bool = false
 

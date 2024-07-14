@@ -4,8 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bft5fqjhfby71" path="res://sprites/enemies/ghost.png" id="2_038gy"]
 
 [node name="Ghost" instance=ExtResource("1_vq7wh")]
+_damage = 15
+_experience = 20
 _move_speed = 90.0
 
-[node name="Texture" parent="." index="0"]
+[node name="Texture" type="Sprite2D" parent="." index="0" groups=["enemy"]]
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_038gy")

@@ -1,22 +1,29 @@
 extends Node2D
 
 var spawns = [{
+	'scene':preload("res://scenes/enemies/mini_ghost.tscn"),
+	'timer':0.0,
+	'interval':1,
+	'start':0.0,
+	'end':1.5*60
+	
+},{
 	'scene':preload("res://scenes/enemies/howl.tscn"),
 	'timer':0.0,
-	'interval':1.5,
+	'interval':2,
 	'start':0.5*60,
 	'end':5.0*60
 },{
 	'scene':preload("res://scenes/enemies/ghost.tscn"),
 	'timer':0.0,
-	'interval':1.0,
-	'start':0.0,
+	'interval':1.5,
+	'start':1*60,
 	'end':10.0*60
 },{
 	'scene':preload("res://scenes/enemies/flame.tscn"),
 	'timer':0.0,
 	'interval':10.0,
-	'start':1*60,
+	'start':1.5*60,
 	'end':20*60
 }]
 

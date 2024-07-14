@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd0ha6thws0xc"]
+
+[ext_resource type="Script" path="res://scripts/sword_slash.gd" id="1_uhjeh"]
+[ext_resource type="Texture2D" uid="uid://bik7wmostm6nq" path="res://sprites/weapons/sword.png" id="2_ol86w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_837y5"]
+radius = 15.5348
+height = 129.07
+
+[node name="SwordSlash" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_uhjeh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, -14)
+rotation = -1.5708
+scale = Vector2(2.80801, 3.348)
+texture = ExtResource("2_ol86w")
+region_rect = Rect2(1083, 70, 137, 116)
+
+[node name="DetectionLimit" type="CollisionShape2D" parent="."]
+position = Vector2(48, -18)
+rotation = -0.544479
+scale = Vector2(2, 1.948)
+shape = SubResource("CapsuleShape2D_837y5")
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_detection_area_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

@@ -28,9 +28,7 @@ func _input(event):
 			
 func _on_mouse_entered():
 	mouse_over = true
-	print(mouse_over)
 
 
 func _on_mouse_exited():
 	mouse_over = false
-	print(mouse_over)

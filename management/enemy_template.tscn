@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://management/enemy_template.gd" id="1_acwfl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7yt0n"]
-radius = 8.0
+radius = 13.0384
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4265s"]
-radius = 11.7047
+radius = 17.0
 
 [node name="EnemyTemplate" type="CharacterBody2D" node_paths=PackedStringArray("_invencibility_timer", "_timer_delete", "_hitbox_area") groups=["enemy"]]
 collision_layer = 4
@@ -14,8 +14,6 @@ script = ExtResource("1_acwfl")
 _invencibility_timer = NodePath("HitboxArea/InvencibilityTimer")
 _timer_delete = NodePath("TimerDelete")
 _hitbox_area = NodePath("HitboxArea")
-
-[node name="Texture" type="Sprite2D" parent="." groups=["enemy"]]
 
 [node name="Collision" type="CollisionShape2D" parent="." groups=["enemy"]]
 shape = SubResource("CircleShape2D_7yt0n")

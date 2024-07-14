@@ -29,7 +29,8 @@ func _physics_process(delta):
 		speed += 4*delta
 		
 func collect():
-	target._update_level(experience)
-	collision.call_deferred("set","disabled",true)
-	queue_free()
+	if target is Hero:
+		target._update_level(experience)
+		collision.call_deferred("set","disabled",true)
+		queue_free()
 

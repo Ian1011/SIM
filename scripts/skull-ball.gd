@@ -3,7 +3,6 @@ extends Area2D
 @export_category("Variabels")
 @export var _damage: float
 @export var _move_speed: float = 300
-@export var _duration: float = 0.2
 @export var _attack_cooldown: float = 0.5
 
 
@@ -13,7 +12,9 @@ extends Area2D
 @export var _attack_area: Area2D
 
 @onready var explosion_sprite = $AttackArea/SpriteExplosion
+@onready var explosion_sprite2 = $AttackArea/SpriteExplosion2
 @onready var skull_ball_sprite = $AnimatedSprite2D
+@onready var anim = $AttackArea/AnimationPlayer
 
 var direction: Vector2
 var is_delete: bool = false
@@ -23,7 +24,7 @@ var enemies = []
 #Funções nativas
 func _ready():
 	explosion_sprite.visible = false
-	_attack_area.set_deferred('monitoring', false)
+	explosion_sprite2.visible = false
 	rotation = direction.angle()
 
 func _physics_process(delta):
@@ -43,9 +44,8 @@ func _on_body_entered(body):
 		_move_speed = 0
 		set_deferred("monitoring", false)
 		skull_ball_sprite.visible = false
-		explosion_sprite.visible = true
-		_attack_timer.start(_duration)
-		_attack_area.set_deferred('monitoring', true)
+		anim.play("explosion")
+		damage_area()
 
 
 func _on_attack_area_body_entered(body):
@@ -57,10 +57,10 @@ func _on_attack_area_body_exited(body):
 	if body is Enemy:
 		enemies.erase(body)
 
-
-func _on_attack_timer_timeout():
+func damage_area():
 	for body in enemies:
 		body._update_health('damage', _damage)
-	queue_free()
+
+
 
 

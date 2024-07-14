@@ -10,7 +10,7 @@ _damage = 20
 _move_speed = 200.0
 is_delete = true
 
-[node name="Texture" parent="." index="0"]
+[node name="Texture" type="Sprite2D" parent="." index="0" groups=["enemy"]]
 texture = ExtResource("2_w1mi4")
 
 [node name="Collision" parent="." index="1"]

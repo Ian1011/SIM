@@ -1,5 +1,8 @@
-res://scenes/enemies
+res://scenes/weapons/sword_utils
 res://scripts
+res://scenes/enemies
+res://sprites/enemies
+res://sprites/weapons
 res://sprites
 res://scenes/weapons
 res://

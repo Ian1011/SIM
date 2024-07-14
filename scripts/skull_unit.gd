@@ -3,8 +3,8 @@ extends Node2D
 @export_category('Variables')
 @warning_ignore("unused_private_class_variable")
 @export var _level: int = 0
-@export var _attack_damage: float = 10
-@export var _attack_cooldown: float = 2.5
+@export var _attack_damage: float = 15
+@export var _attack_cooldown: float = 4.0
 @export var _target: Node2D
 
 @export_category('Objects')
