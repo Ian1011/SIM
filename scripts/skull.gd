@@ -6,6 +6,7 @@ var _attack_damage: float = 15
 var _attack_cooldown: float = 4.0
 var name_skill: String = "Skull"
 var enable: bool = false
+var type = "Active"
 
 @onready var hero = Global.hero
 @onready var skull_scene = preload("res://scenes/weapons/skulls_utils/skull_unit.tscn")

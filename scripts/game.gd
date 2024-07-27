@@ -10,11 +10,15 @@ class_name Game
 
 var game_time = 0.0
 # Const
-# start and end in minutes
-const SKILLS_SCENES = {
+var SKILLS_ACTIVES = {
 	"Skull":preload("res://scenes/weapons/skull.tscn"),
 	"Sword":preload("res://scenes/weapons/sword.tscn")
 }
+var SKILLS_PASSIVES = {
+	"Heart":preload("res://scenes/weapons/heart.tscn")
+}
+
+var SKILLS_SCENES = {}
 
 # Funções Nativas
 func _ready():
@@ -26,6 +30,20 @@ func _process(delta):
 #Funções
 func skill_upgrade():
 	var i = 0
+	SKILLS_SCENES = {}
+	if skills_enabled.skills_actives < skills_enabled.maxskillsActive and skills_enabled.skills_passives < skills_enabled.maxskillsPassives:
+		SKILLS_SCENES.merge(SKILLS_ACTIVES)
+		SKILLS_SCENES.merge(SKILLS_PASSIVES)
+	else:
+		if skills_enabled.skills_actives < skills_enabled.maxskillsActive:
+			SKILLS_SCENES.merge(SKILLS_PASSIVES)
+			SKILLS_SCENES.merge(skills_enabled.skills)
+		elif skills_enabled.skills_passives < skills_enabled.maxskillsPassives:
+			SKILLS_SCENES.merge(SKILLS_ACTIVES)
+			SKILLS_SCENES.merge(skills_enabled.skills)
+		else:
+			SKILLS_SCENES.merge(skills_enabled.skills)
+
 	while i < 3:
 		var skill_sorted = SKILLS_SCENES.keys().pick_random()
 		if not skill_sorted in skills_enabled.skills.keys():
@@ -40,8 +58,16 @@ func skill_upgrade():
 		
 	level_panel.skill_choose()
 	
-func upgrade_character(item):
-	skills_enabled.update_skill(item)
+func merge_dictionaries(dict1: Dictionary, dict2: Dictionary) -> Dictionary:
+	var merged_dict = {}
+	for key in dict1.keys():
+		merged_dict[key] = dict1[key]
+	for key in dict2.keys():
+		merged_dict[key] = dict2[key]
+	return merged_dict
+	
+func upgrade_character(item, type):
+	skills_enabled.update_skill(item, type)
 
 #Player
 func _on_audio_stream_player_finished():

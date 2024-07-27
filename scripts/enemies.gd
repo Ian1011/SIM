@@ -27,7 +27,7 @@ var spawns = [{
 	'end':20*60
 }]
 
-var game_time
+var game_time = 0.0
 
 
 func _ready():

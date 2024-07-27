@@ -9,6 +9,7 @@ var _attack_cooldown: float = 1.5
 var _slash_duration: float = 0.5
 var _size: float = 1
 var enable: bool = false
+var type = "Active"
 
 #Variaveis de buff gerais
 var cooldown_porc: float = 0

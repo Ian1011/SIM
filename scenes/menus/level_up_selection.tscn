@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqgrssvbfcrov"]
+[gd_scene load_steps=5 format=3 uid="uid://bqgrssvbfcrov"]
 
 [ext_resource type="Script" path="res://scripts/level_up_selection.gd" id="1_s6qvk"]
-[ext_resource type="Texture2D" uid="uid://bol2n8wuwx5d4" path="res://sprites/weapons/skull.png" id="2_2flei"]
 [ext_resource type="Script" path="res://scripts/utils/choice_config.gd" id="2_jjg6r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tp328"]
@@ -73,15 +72,15 @@ script = ExtResource("2_jjg6r")
 
 [node name="Icon" type="TextureRect" parent="LevelUpHud/Control/Choice1"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -32.0
-offset_top = 10.0
-offset_right = 32.0
-offset_bottom = 58.0
-grow_horizontal = 2
-texture = ExtResource("2_2flei")
+anchors_preset = -1
+anchor_left = 0.237
+anchor_top = 0.003
+anchor_right = 0.749
+anchor_bottom = 0.404
+offset_left = 0.749996
+offset_top = 0.043
+offset_right = 0.75
+offset_bottom = 0.123993
 
 [node name="Name" type="Label" parent="LevelUpHud/Control/Choice1"]
 layout_mode = 1
@@ -91,9 +90,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -23.5
-offset_top = -69.5
+offset_top = -29.5
 offset_right = 23.5
-offset_bottom = -46.5
+offset_bottom = -6.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Name"
@@ -106,9 +105,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -112.5
-offset_top = -24.5
+offset_top = 5.5
 offset_right = 112.5
-offset_bottom = 85.5
+offset_bottom = 115.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Description of Skill"
@@ -152,15 +151,15 @@ script = ExtResource("2_jjg6r")
 
 [node name="Icon" type="TextureRect" parent="LevelUpHud/Control/Choice2"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -32.0
-offset_top = 10.0
-offset_right = 32.0
-offset_bottom = 58.0
-grow_horizontal = 2
-texture = ExtResource("2_2flei")
+anchors_preset = -1
+anchor_left = 0.237
+anchor_top = 0.003
+anchor_right = 0.749
+anchor_bottom = 0.404
+offset_left = 0.749996
+offset_top = 0.043
+offset_right = 0.75
+offset_bottom = 0.123993
 
 [node name="Name" type="Label" parent="LevelUpHud/Control/Choice2"]
 layout_mode = 1
@@ -170,9 +169,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -23.5
-offset_top = -69.5
+offset_top = -29.5
 offset_right = 23.5
-offset_bottom = -46.5
+offset_bottom = -6.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Name"
@@ -185,9 +184,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -112.5
-offset_top = -24.5
+offset_top = 5.5
 offset_right = 112.5
-offset_bottom = 85.5
+offset_bottom = 115.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Description of Skill"
@@ -231,15 +230,15 @@ script = ExtResource("2_jjg6r")
 
 [node name="Icon" type="TextureRect" parent="LevelUpHud/Control/Choice3"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -32.0
-offset_top = 10.0
-offset_right = 32.0
-offset_bottom = 58.0
-grow_horizontal = 2
-texture = ExtResource("2_2flei")
+anchors_preset = -1
+anchor_left = 0.237
+anchor_top = 0.003
+anchor_right = 0.749
+anchor_bottom = 0.404
+offset_left = 0.749996
+offset_top = 0.043
+offset_right = 0.75
+offset_bottom = 0.123993
 
 [node name="Name" type="Label" parent="LevelUpHud/Control/Choice3"]
 layout_mode = 1
@@ -249,9 +248,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -23.5
-offset_top = -69.5
+offset_top = -29.5
 offset_right = 23.5
-offset_bottom = -46.5
+offset_bottom = -6.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Name"
@@ -264,9 +263,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -112.5
-offset_top = -24.5
+offset_top = 5.5
 offset_right = 112.5
-offset_bottom = 85.5
+offset_bottom = 115.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Description of Skill"

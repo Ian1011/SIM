@@ -58,5 +58,5 @@ func _on_body_entered(body):
 func _on_cooldown_timeout():
 	attack()
 
-func _on_animation_player_animation_finished(anim_name):
+func _on_animation_player_animation_finished():
 	cooldown.start(_attack_cooldown * (1 - cooldown_porc))

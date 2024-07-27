@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://8k70t2wpnvol"]
+
+[ext_resource type="Script" path="res://scripts/skills/hearth.gd" id="1_5jm58"]
+
+[node name="Heart" type="Node2D"]
+script = ExtResource("1_5jm58")

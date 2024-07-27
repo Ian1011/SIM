@@ -1,5 +1,9 @@
-res://scenes/weapons/sword_utils
 res://scripts
+res://scenes/items
+res://scripts/utils
+res://scenes/menus
+res://scripts/skills
+res://scenes/weapons/sword_utils
 res://scenes/enemies
 res://sprites/enemies
 res://sprites/weapons
@@ -7,5 +11,3 @@ res://sprites
 res://scenes/weapons
 res://
 res://management
-res://scripts/utils
-res://scenes/menus

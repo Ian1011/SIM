@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkawydjqqubcp"]
+
+[ext_resource type="Script" path="res://scripts/dash.gd" id="1_mfj70"]
+[ext_resource type="PackedScene" uid="uid://d1rqp0thd7ecj" path="res://scenes/hero.tscn" id="2_c1kv7"]
+
+[node name="Dash" type="Node2D"]
+script = ExtResource("1_mfj70")
+
+[node name="GhostTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="Hero" parent="." instance=ExtResource("2_c1kv7")]
+
+[connection signal="timeout" from="GhostTimer" to="." method="_on_ghost_timer_timeout"]

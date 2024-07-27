@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2ecfeyak40bo"]
+
+[ext_resource type="Texture2D" uid="uid://8d60nvt3hmmt" path="res://sprites/weapons/icons/moldure2.png" id="1_aef12"]
+[ext_resource type="Script" path="res://scripts/utils/skill_moldure.gd" id="2_mrkf6"]
+
+[sub_resource type="Theme" id="Theme_8ynnb"]
+
+[node name="SkillMoldure" type="TextureRect"]
+anchors_preset = -1
+anchor_left = 0.002
+anchor_top = 0.003
+anchor_right = 0.004
+anchor_bottom = 0.007
+offset_left = -2.56
+offset_top = -2.16
+offset_right = 34.88
+offset_bottom = 34.96
+scale = Vector2(0.125, 0.125)
+theme = SubResource("Theme_8ynnb")
+texture = ExtResource("1_aef12")
+script = ExtResource("2_mrkf6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2

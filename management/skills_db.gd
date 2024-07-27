@@ -1,139 +1,138 @@
 extends Node
 
+const ICON_PATH = "res://sprites/weapons/icons/"
+
 const SKILLS = {
 	"Skull":{
 		"Name":"Skull",
+		"Icon":ICON_PATH + "skull.png",
+		"Type":"Offensive",
 		"Level_1":{
-			"Icon":"",
 			"Description":"Add a skull that shoots a fire ball",
-			"Lv":"Lv: 1",
-			"Rarity":"Rare"
+			"Lv":"Lv: 1"
 		},
 		"Level_2":{
-			"Icon":"",
 			"Description":"Cooldown -0.5sec, Attack +5",
-			"Lv":"Lv: 2",
-			"Rarity":"Rare"
+			"Lv":"Lv: 2"
 		},
 		"Level_3":{
-			"Icon":"",
 			"Description":"Cooldown -0.5sec, Attack +5",
-			"Lv":"Lv: 3",
-			"Rarity":"Rare"
+			"Lv":"Lv: 3"
 		},
 		"Level_4":{
-			"Icon":"",
 			"Description":"Add another skull",
-			"Lv":"Lv: 4",
-			"Rarity":"Epic"
+			"Lv":"Lv: 4"
 		},
 		"Level_5":{
-			"Icon":"",
 			"Description":"Cooldown -0.5sec, Attack +5",
-			"Lv":"Lv: 5",
-			"Rarity":"Epic"
+			"Lv":"Lv: 5"
 		},
 		"Level_6":{
-			"Icon":"",
 			"Description":"Cooldown -0.5sec, Attack +5",
-			"Lv":"Lv: 6",
-			"Rarity":"Epic"
+			"Lv":"Lv: 6"
 		},
 		"Level_7":{
-			"Icon":"",
 			"Description":"Add another skull",
-			"Lv":"Lv: 7",
-			"Rarity":"Legendary"
+			"Lv":"Lv: 7"
 		}
 	},
 	"Sword":{
 		"Name":"Sword",
+		"Icon":ICON_PATH + "sword.png",
+		"Type":"Offensive",
 		"Level_1":{
-			"Icon":"",
 			"Description":"Adds a slash that deals damage to everyone in the area",
-			"Lv":"Lv: 1",
-			"Rarity":"Pica das galaxias"
+			"Lv":"Lv: 1"
 		},
 		"Level_2":{
-			"Icon":"",
 			"Description":"Attack +5, Cooldown -10%",
-			"Lv":"Lv: 2",
-			"Rarity":"Pica das galaxias"
+			"Lv":"Lv: 2"
 		},
 		"Level_3":{
-			"Icon":"",
 			"Description":"Attack +5, Size +10%",
-			"Lv":"Lv: 3",
-			"Rarity":"Pica das galaxias"
+			"Lv":"Lv: 3"
 		},
 		"Level_4":{
-			"Icon":"",
 			"Description":"Size +10%",
-			"Lv":"Lv: 4",
-			"Rarity":"Pica das galaxias"
+			"Lv":"Lv: 4"
 		},
 		"Level_5":{
-			"Icon":"",
 			"Description":"Attack +5, Cooldown -10%",
-			"Lv":"Lv: 5",
-			"Rarity":"Pica das galaxias"
+			"Lv":"Lv: 5"
 		},
 		"Level_6":{
-			"Icon":"",
 			"Description":"Attack +5, Size +10%",
-			"Lv":"Lv: 6",
-			"Rarity":"Pica das galaxias"
+			"Lv":"Lv: 6"
 		},
 		"Level_7":{
-			"Icon":"",
 			"Description":"Add another slash",
-			"Lv":"Lv: 7",
-			"Rarity":"Pica das galaxias"
+			"Lv":"Lv: 7"
 		}
 	},
-	"Template":{
-		"Name":"Template",
+	"Heart":{
+		"Name":"Heart",
+		"Icon":ICON_PATH + "heart.png",
+		"Type":"Passive",
 		"Level_1":{
-			"Icon":"",
-			"Description":"",
-			"Lv":"Lv: 1",
-			"Rarity":""
+			"Description":"+5 Max Health",
+			"Lv":"Lv: 1"
 		},
 		"Level_2":{
-			"Icon":"",
-			"Description":"",
-			"Lv":"Lv: 2",
-			"Rarity":""
+			"Description":"+5 Max Health",
+			"Lv":"Lv: 2"
 		},
 		"Level_3":{
-			"Icon":"",
-			"Description":"",
-			"Lv":"Lv: 3",
-			"Rarity":""
+			"Description":"+5 Max Health",
+			"Lv":"Lv: 3"
 		},
 		"Level_4":{
-			"Icon":"",
-			"Description":"",
-			"Lv":"Lv: 4",
-			"Rarity":""
+			"Description":"+5 Max Health",
+			"Lv":"Lv: 4"
 		},
 		"Level_5":{
-			"Icon":"",
-			"Description":"",
-			"Lv":"Lv: 5",
-			"Rarity":""
+			"Description":"+5 Max Health",
+			"Lv":"Lv: 5"
 		},
 		"Level_6":{
-			"Icon":"",
-			"Description":"",
-			"Lv":"Lv: 6",
-			"Rarity":""
+			"Description":"+5 Max Health",
+			"Lv":"Lv: 6"
 		},
 		"Level_7":{
-			"Icon":"",
-			"Description":"",
+			"Description":"+5 Max Health",
 			"Lv":"Lv: 7",
-			"Rarity":""
+		}
+	}, 
+	"Template":{
+		"Name":"Template",
+		"Icon":"",
+		"Type":"",
+		"Level_1":{
+			"Description":"",
+			"Lv":"Lv: 1"
+		},
+		"Level_2":{
+			"Description":"",
+			"Lv":"Lv: 2"
+		},
+		"Level_3":{
+			"Description":"",
+			"Lv":"Lv: 3"
+		},
+		"Level_4":{
+			"Description":"",
+			"Lv":"Lv: 4"
+		},
+		"Level_5":{
+			"Description":"",
+			"Lv":"Lv: 5"
+		},
+		"Level_6":{
+			"Description":"",
+			"Lv":"Lv: 6"
+		},
+		"Level_7":{
+			"Description":"",
+			"Lv":"Lv: 7"
 		}
 	}
-}
+}	

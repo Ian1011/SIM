@@ -8,7 +8,8 @@ class_name Hero
 @export var _health: float = 100
 @export var _speed: float = 90
 
-var initial_skill = preload("res://scenes/weapons/skull.tscn")
+var initial_skill = [preload("res://scenes/weapons/skull.tscn"), preload("res://scenes/weapons/sword.tscn"), preload("res://scenes/weapons/heart.tscn")]
+var initial_item = null
 
 @export_category('Objects')
 @onready var camera = $Camera
@@ -19,7 +20,7 @@ var initial_skill = preload("res://scenes/weapons/skull.tscn")
 
 var _health_max = _health
 var health_initial = _health_max
-var _look_direction = Vector2(0, 0)
+var _look_direction = Vector2(1, 0)
 
 # Funções Nativas
 func _ready():
@@ -39,13 +40,12 @@ func _physics_process(_delta):
 		sprite.flip_h = false
 	velocity = _direction * _speed
 	
-	_look_direction = velocity.normalized()
 	camera.global_position = global_position
 	move_and_slide()
 
 # Funções
-func add_skill(item):
-	Global.game.upgrade_character(item)
+func add_skill(item, type):
+	Global.game.upgrade_character(item, type)
 
 
 #Health
