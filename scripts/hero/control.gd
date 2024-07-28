@@ -1,6 +1,5 @@
 extends Control
 
-
 @export var default_minutes := 0
 @export_range(0, 59) var default_seconds := 0
 var minutes = 0
@@ -12,28 +11,19 @@ var seconds = 0
 @onready var level = $Level
 @onready var skills_actives = $HudInventory/SkillsActives
 @onready var skills_passives = $HudInventory/SkillsPassives
-@onready var items = $HudInventory/Items
+@onready var items_hud = $HudInventory/Items
+@onready var items_selection = $ItemSelection
 @onready var hud_inventory = $HudInventory
 @onready var skill_moldure = preload("res://scenes/menus/skill_moldure.tscn")
 @onready var items_moldure = preload("res://scenes/menus/item_moldure.tscn")
 
-
-var _hero = Global.hero
+var items_scenes = [preload("res://scenes/items/dash_backup.tscn")]
+var items_moldures = []
+var items_actives = {}
 var _life_bar_sprites = {}
+var _hero
 
 
-
-
-func _ready():
-	add_items_moldures_initial()
-	var viewport_size = get_viewport().size
-	# Posiciona o Control no centro da tela
-	#position = Vector2(viewport_size.x / 2 - size.x / 2, viewport_size.y / 2 - size.y / 2)
-	#var viewport_size = get_viewport().size
-	#var aspect_ratio = viewport_size.x / viewport_size.y
-	#life_bar.scale = Vector2(aspect_ratio, aspect_ratio)  # ajusta o tamanho do sprite baseado na proporção da tela
-	#pass
-	
 func start_score():
 	_hero = Global.hero
 	life_bar_num.text = str(_hero._health, "/", _hero._health_max)
@@ -51,15 +41,32 @@ func preload_resources():
 		"0%":preload("res://sprites/lifebar/lifebar6.png")
 	}
 
+func sort_item():
+	var item = items_scenes.pick_random().instantiate()
+	for i in items_actives.keys():
+		if item.name_item == i:
+			item = items_actives[i]
+	items_selection.item_sorts(item, items_moldures)
+
 func add_items_moldures_initial():
 	for i in range(3):
 		var item = items_moldure.instantiate()
 		item.number = i+1
 		item.empty = true
-		items.add_child(item)
+		items_moldures.append(item)
+		items_hud.add_child(item)
 
-func add_item_moldure(item):
-	pass
+func add_item_moldure(item, number):
+	match number:
+		"Slot1":
+			number = 0
+		"Slot2":
+			number = 1
+		"Slot3":
+			number = 2
+	item.quantity += 1
+	print(item.quantity)
+	items_moldures[number].initialize_item(item)
 
 func add_skill_moldure(skill, type):
 	var skill_add = skill_moldure.instantiate()

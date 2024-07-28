@@ -1,8 +1,9 @@
+Control
+TextureRect
+Sprite2D
 Node2D
 Label
-Control
 Panel
-Sprite2D
 AnimationPlayer
 CollisionShape2D
 Area2D
@@ -10,5 +11,4 @@ CanvasLayer
 GPUParticles2D
 Node
 Timer
-TextureRect
 GridContainer

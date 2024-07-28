@@ -2,13 +2,12 @@ extends Node2D
 
 @onready var ghost_scene = preload("res://scenes/items/dash_unit.tscn")
 @onready var ghost_timer = $GhostTimer
+@onready var parent = get_parent()
+@onready var hero = Global.hero
+var name_item = "Dash"
+var enable = false
 var cooldown = 1
 var quantity = 0
-
-var hero
-
-func _ready():
-	pass
 
 func _use_item():
 	dash()
@@ -43,6 +42,10 @@ func dash():
 func _input(event):
 	if event.is_action_pressed("ui_home"):
 		dash()
+		quantity -= 1
+		parent.update_carac()
+		if quantity <= 0:
+			parent.reset_moldure()
 
 func _on_ghost_timer_timeout():
 	add_ghost()

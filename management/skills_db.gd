@@ -1,6 +1,14 @@
 extends Node
 
+const ITEM_ICON_PATH = "res://sprites/items/icons/"
 const ICON_PATH = "res://sprites/weapons/icons/"
+
+const ITEMS = {
+	"Dash":{
+		"Icon":ITEM_ICON_PATH + "dash.png",
+		"Description":"Use a dash in the player's last direction"
+	}
+}
 
 const SKILLS = {
 	"Skull":{

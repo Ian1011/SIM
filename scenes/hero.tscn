@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/hero.gd" id="1_tlnba"]
 [ext_resource type="Texture2D" uid="uid://dpekok6mnsmsy" path="res://sprites/hero.png" id="2_jigcs"]
 [ext_resource type="Texture2D" uid="uid://c5fgugt6fc3q0" path="res://sprites/lifebar/lifebar1.png" id="3_jllwb"]
-[ext_resource type="Script" path="res://scripts/items.gd" id="3_uwigt"]
 [ext_resource type="Script" path="res://scripts/hero/control.gd" id="4_khkpc"]
+[ext_resource type="PackedScene" uid="uid://d0eg7ljbsgha7" path="res://scenes/menus/item_selection.tscn" id="5_l410a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j8gta"]
 radius = 21.25
@@ -28,6 +28,10 @@ radius = 70.0643
 [node name="Hero" type="CharacterBody2D" groups=["Hero"]]
 collision_mask = 12
 script = ExtResource("1_tlnba")
+_level = null
+_level_experience = null
+_level_max_experience = null
+_health = null
 _speed = 150.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Hero"]]
@@ -77,9 +81,6 @@ position = Vector2(-1000, -400)
 
 [node name="Position12" type="Marker2D" parent="Positions"]
 position = Vector2(-1000, 400)
-
-[node name="Items" type="Node2D" parent="."]
-script = ExtResource("3_uwigt")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -175,6 +176,9 @@ offset_right = 816.0
 offset_bottom = -298.0
 theme_override_constants/h_separation = 60
 columns = 3
+
+[node name="ItemSelection" parent="Control" instance=ExtResource("5_l410a")]
+visible = false
 
 [node name="CollectArea" type="Area2D" parent="."]
 collision_mask = 8

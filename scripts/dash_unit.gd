@@ -12,8 +12,6 @@ func ghosting():
 	var tween_fade = get_tree().create_tween()
 	
 	tween_fade.tween_property(self, "self_modulate", Color(1, 1, 1, 0), 0.5)
-	#particles.emitting = true
 	await tween_fade.finished
 	
-	#particles.emitting = false
 	queue_free()

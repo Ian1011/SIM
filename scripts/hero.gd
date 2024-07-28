@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Hero
 
+
+
 @export_category('Variables')
 @export var _level: int = 1
 @export var _level_experience: int = 0
@@ -9,7 +11,7 @@ class_name Hero
 @export var _speed: float = 90
 
 var initial_skill = [preload("res://scenes/weapons/skull.tscn"), preload("res://scenes/weapons/sword.tscn"), preload("res://scenes/weapons/heart.tscn")]
-var initial_item = null
+var initial_item = [preload("res://scenes/items/dash_backup.tscn")]
 
 @export_category('Objects')
 @onready var camera = $Camera
@@ -26,6 +28,7 @@ var _look_direction = Vector2(1, 0)
 func _ready():
 	Global.hero = self
 	control.start_score()
+	add_initial_item():
 
 func _physics_process(_delta):
 	var _direction: Vector2 = Input.get_vector(
@@ -47,6 +50,12 @@ func _physics_process(_delta):
 func add_skill(item, type):
 	Global.game.upgrade_character(item, type)
 
+func add_item_moldure(item, number):
+	control.add_item_moldure(item, number)
+
+func add_initial_item():
+	for i in range(initial_item):
+		control.add_item_moldure(initial_item[i], "Slot"+str(i+1))
 
 #Health
 func _update_health(_damage: String, _points: int):
