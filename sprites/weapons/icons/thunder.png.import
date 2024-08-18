@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch5gmvb0s070m"
-path="res://.godot/imported/skull-ball.png-cda4fcb887f73084e38d515c947e3eae.ctex"
+uid="uid://dsg07608hw4ss"
+path="res://.godot/imported/thunder.png-96b5c5ed38a1a1cb3a676fa9fae79493.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/weapons/skull-ball.png"
-dest_files=["res://.godot/imported/skull-ball.png-cda4fcb887f73084e38d515c947e3eae.ctex"]
+source_file="res://sprites/weapons/icons/thunder.png"
+dest_files=["res://.godot/imported/thunder.png-96b5c5ed38a1a1cb3a676fa9fae79493.ctex"]
 
 [params]
 

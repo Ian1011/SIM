@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1rqp0thd7ecj"]
+[gd_scene load_steps=13 format=3 uid="uid://d1rqp0thd7ecj"]
 
 [ext_resource type="Script" path="res://scripts/hero.gd" id="1_tlnba"]
 [ext_resource type="Texture2D" uid="uid://dpekok6mnsmsy" path="res://sprites/hero.png" id="2_jigcs"]
 [ext_resource type="Texture2D" uid="uid://c5fgugt6fc3q0" path="res://sprites/lifebar/lifebar1.png" id="3_jllwb"]
-[ext_resource type="Script" path="res://scripts/items.gd" id="3_uwigt"]
 [ext_resource type="Script" path="res://scripts/hero/control.gd" id="4_khkpc"]
+[ext_resource type="PackedScene" uid="uid://d0eg7ljbsgha7" path="res://scenes/menus/item_selection.tscn" id="5_l410a"]
+[ext_resource type="PackedScene" uid="uid://kmldltw0e11s" path="res://scenes/items/chest.tscn" id="6_ablo0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j8gta"]
 radius = 21.25
@@ -79,7 +80,7 @@ position = Vector2(-1000, -400)
 position = Vector2(-1000, 400)
 
 [node name="Items" type="Node2D" parent="."]
-script = ExtResource("3_uwigt")
+position = Vector2(1, 0)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -176,6 +177,9 @@ offset_bottom = -298.0
 theme_override_constants/h_separation = 60
 columns = 3
 
+[node name="ItemSelection" parent="Control" instance=ExtResource("5_l410a")]
+visible = false
+
 [node name="CollectArea" type="Area2D" parent="."]
 collision_mask = 8
 
@@ -183,10 +187,13 @@ collision_mask = 8
 shape = SubResource("CircleShape2D_7hfrs")
 
 [node name="AttractArea" type="Area2D" parent="."]
-collision_mask = 12
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttractArea"]
 shape = SubResource("CircleShape2D_rw0gy")
+
+[node name="Chest" parent="." instance=ExtResource("6_ablo0")]
+position = Vector2(199, -234)
 
 [connection signal="timeout" from="Control/ClockTimer" to="Control" method="_on_clock_timer_timeout"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]

@@ -1,19 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0eg7ljbsgha7"]
+[gd_scene load_steps=5 format=3 uid="uid://d0eg7ljbsgha7"]
 
-[ext_resource type="Texture2D" uid="uid://bh2kxpe0mf5av" path="res://sprites/arrows.png" id="1_gr5ao"]
+[ext_resource type="Script" path="res://scripts/utils/item_selection.gd" id="1_4su8x"]
+[ext_resource type="Texture2D" uid="uid://p5ns214ll75x" path="res://sprites/items/icons/placeholder.png" id="2_7gpgu"]
+[ext_resource type="Script" path="res://scripts/utils/item_menu_icon.gd" id="2_p1by2"]
+[ext_resource type="Texture2D" uid="uid://bh2kxpe0mf5av" path="res://sprites/items/icons/arrows.png" id="4_qiqt2"]
 
 [node name="ItemSelection" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_4su8x")
 
 [node name="ItemMenu" type="Control" parent="."]
 layout_mode = 3
-anchor_right = 0.665
-anchor_bottom = 0.719
-offset_right = 2.13397
-offset_bottom = 2.31995
+anchor_top = 0.099
+anchor_right = 0.84
+anchor_bottom = 0.821
+offset_left = 222.0
+offset_top = -0.280006
+offset_right = 0.133911
+offset_bottom = -0.120178
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="ItemMenu"]
 layout_mode = 0
-offset_right = 853.334
+offset_right = 854.0
 offset_bottom = 520.0
 
 [node name="Label" type="Label" parent="ItemMenu"]
@@ -31,73 +41,90 @@ press ESC to discard the item obtained"
 horizontal_alignment = 1
 
 [node name="Icons" type="Control" parent="ItemMenu"]
-anchors_preset = 0
-offset_left = 277.0
-offset_top = 75.0
-offset_right = 577.0
-offset_bottom = 375.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.667
+offset_top = -182.0
+offset_right = 157.333
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Slot1" type="Panel" parent="ItemMenu/Icons"]
+[node name="Slot1" type="TextureRect" parent="ItemMenu/Icons"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -27.0
-offset_top = -2.0
-offset_right = 29.0
-offset_bottom = 54.0
+offset_left = -30.0
+offset_right = 98.0
+offset_bottom = 128.0
 grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_7gpgu")
+script = ExtResource("2_p1by2")
 
-[node name="Slot2" type="Panel" parent="ItemMenu/Icons"]
+[node name="Slot2" type="TextureRect" parent="ItemMenu/Icons"]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.399
+anchor_right = 0.601
+anchor_bottom = 0.213
+offset_left = 128.32
+offset_top = 130.0
+offset_right = 191.68
+offset_bottom = 189.84
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_7gpgu")
+script = ExtResource("2_p1by2")
+
+[node name="Slot3" type="TextureRect" parent="ItemMenu/Icons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.3
+anchor_right = 0.2
 anchor_bottom = 0.5
-offset_left = -56.0
-offset_top = -28.0
-offset_bottom = 28.0
-grow_horizontal = 0
+offset_top = 34.0
+offset_right = 64.0
+offset_bottom = 98.0
 grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_7gpgu")
+script = ExtResource("2_p1by2")
 
-[node name="Slot3" type="Panel" parent="ItemMenu/Icons"]
+[node name="Slot4" type="TextureRect" parent="ItemMenu/Icons"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -28.0
-offset_right = 56.0
-offset_bottom = 28.0
-grow_vertical = 2
+anchors_preset = -1
+anchor_left = 0.399
+anchor_right = 0.601
+anchor_bottom = 0.213
+offset_left = 2.32001
+offset_top = 256.0
+offset_right = 65.68
+offset_bottom = 315.84
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_7gpgu")
+script = ExtResource("2_p1by2")
 
-[node name="Slot4" type="Panel" parent="ItemMenu/Icons"]
+[node name="Arrows" type="TextureRect" parent="ItemMenu/Icons"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -28.0
-offset_top = -56.0
-offset_right = 28.0
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -29.0
+offset_right = -59.0
+offset_bottom = 27.0
 grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Arrow" type="Control" parent="ItemMenu"]
-anchors_preset = 0
-offset_left = 123.0
-offset_top = 68.0
-offset_right = 901.0
-offset_bottom = 495.0
-scale = Vector2(0.75, 0.75)
-
-[node name="Arrows" type="Sprite2D" parent="ItemMenu/Arrow"]
-position = Vector2(505.333, 206.667)
-scale = Vector2(2.19444, 2.20298)
-texture = ExtResource("1_gr5ao")
-region_enabled = true
-region_rect = Rect2(28, 14, 18, 29)
+grow_vertical = 2
+rotation = -1.5708
+pivot_offset = Vector2(28, 28)
+texture = ExtResource("4_qiqt2")
 
 [node name="Information" type="Control" parent="ItemMenu"]
 anchors_preset = 0
@@ -106,30 +133,41 @@ offset_top = 387.0
 offset_right = 852.0
 offset_bottom = 520.0
 
-[node name="Label" type="Label" parent="ItemMenu/Information"]
+[node name="NameItem" type="Label" parent="ItemMenu/Information"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -45.5
-offset_top = 14.0
-offset_right = 46.5
-offset_bottom = 37.0
+offset_left = -156.5
+offset_top = 18.0
+offset_right = 160.5
+offset_bottom = 41.0
 grow_horizontal = 2
-text = "Name_Item"
+text = "Use the arrow keys for more information"
+horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="ItemMenu/Information"]
+[node name="DescItem" type="Label" parent="ItemMenu/Information"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -73.5
+offset_left = -132.5
 offset_top = -6.5
-offset_right = 75.5
+offset_right = 134.5
 offset_bottom = 16.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Description of Item
+text = "The bottom icon is the item sorted
 "
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="ItemMenu/Icons/Slot1" to="ItemMenu/Icons/Slot1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ItemMenu/Icons/Slot1" to="ItemMenu/Icons/Slot1" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="ItemMenu/Icons/Slot2" to="ItemMenu/Icons/Slot2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ItemMenu/Icons/Slot2" to="ItemMenu/Icons/Slot2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="ItemMenu/Icons/Slot3" to="ItemMenu/Icons/Slot3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ItemMenu/Icons/Slot3" to="ItemMenu/Icons/Slot3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="ItemMenu/Icons/Slot4" to="ItemMenu/Icons/Slot4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ItemMenu/Icons/Slot4" to="ItemMenu/Icons/Slot4" method="_on_mouse_exited"]

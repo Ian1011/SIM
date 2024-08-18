@@ -36,20 +36,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [Rect2(126, 128, 256, 256), Rect2(434, 118, 256, 266), Rect2(742, 108, 256, 276), Rect2(1050, 92, 256, 292), Rect2(1358, 84, 256, 300), Rect2(1666, 80, 256, 304)]
 }
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ruhp6"]
 _data = {
@@ -57,7 +43,7 @@ _data = {
 "open": SubResource("Animation_cwxli")
 }
 
-[node name="Chest" type="Area2D"]
+[node name="Chest" type="Area2D" groups=["loot"]]
 collision_layer = 8
 script = ExtResource("1_af3lf")
 

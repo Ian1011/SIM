@@ -3,7 +3,7 @@ class_name Enemy
 @onready var _target
 @onready var _velocity
 @onready var sprite = $Texture
-@onready var loot_base = get_tree().get_first_node_in_group("loot")
+@onready var loot_base = get_tree().get_first_node_in_group("loot_central")
 @onready var enemies_base = get_tree().get_first_node_in_group("enemies")
 @onready var xp_item = preload("res://scenes/items/xp_item.tscn")
 @onready var hp_item = preload("res://scenes/items/hp_item.tscn")
@@ -79,7 +79,7 @@ func death():
 	var item_instance = xp_item.instantiate()
 	item_instance.experience = _experience
 	item_instance.global_position = global_position
-	loot_base.call_deferred("add_child", item_instance)
+	loot_base.call_deferred('add_child', item_instance)
 	queue_free()
 
 func _on_timer_delete_timeout():

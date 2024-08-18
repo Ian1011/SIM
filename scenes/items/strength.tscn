@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4xow6l1ocp8a"]
+
+[ext_resource type="Script" path="res://scripts/items/damage.gd" id="1_yybkb"]
+
+[node name="Strength" type="Node2D"]
+script = ExtResource("1_yybkb")
+
+[node name="DurationTimer" type="Timer" parent="."]

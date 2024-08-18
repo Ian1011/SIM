@@ -1,6 +1,5 @@
 extends Control
 
-
 @export var default_minutes := 0
 @export_range(0, 59) var default_seconds := 0
 var minutes = 0
@@ -12,34 +11,26 @@ var seconds = 0
 @onready var level = $Level
 @onready var skills_actives = $HudInventory/SkillsActives
 @onready var skills_passives = $HudInventory/SkillsPassives
-@onready var items = $HudInventory/Items
+@onready var items_hud = $HudInventory/Items
+@onready var items_spawn = $"../Items"
+@onready var items_selection = $ItemSelection
 @onready var hud_inventory = $HudInventory
 @onready var skill_moldure = preload("res://scenes/menus/skill_moldure.tscn")
-@onready var items_moldure = preload("res://scenes/menus/item_moldure.tscn")
+@onready var item_moldure_scene = preload("res://scenes/menus/item_moldure.tscn")
 
-
-var _hero = Global.hero
+var ITEMS_SCENES = [preload("res://scenes/items/invincibility.tscn"), preload("res://scenes/items/strength.tscn"), preload("res://scenes/items/speed.tscn")]
+var items_moldures = []
 var _life_bar_sprites = {}
+var _hero
 
 
-
-
-func _ready():
-	add_items_moldures_initial()
-	var viewport_size = get_viewport().size
-	# Posiciona o Control no centro da tela
-	#position = Vector2(viewport_size.x / 2 - size.x / 2, viewport_size.y / 2 - size.y / 2)
-	#var viewport_size = get_viewport().size
-	#var aspect_ratio = viewport_size.x / viewport_size.y
-	#life_bar.scale = Vector2(aspect_ratio, aspect_ratio)  # ajusta o tamanho do sprite baseado na proporção da tela
-	#pass
-	
 func start_score():
 	_hero = Global.hero
 	life_bar_num.text = str(_hero._health, "/", _hero._health_max)
 	timer_counter.text = str("%02d" % default_minutes) + ":" + str("%02d" % default_seconds)
 	level.text = str("Lv." + str(_hero._level))
 	preload_resources()
+	add_items_moldures()
 
 func preload_resources():
 	_life_bar_sprites = {
@@ -51,15 +42,29 @@ func preload_resources():
 		"0%":preload("res://sprites/lifebar/lifebar6.png")
 	}
 
-func add_items_moldures_initial():
-	for i in range(3):
-		var item = items_moldure.instantiate()
-		item.number = i+1
-		item.empty = true
-		items.add_child(item)
+func sort_item():
+	var item_sort = ITEMS_SCENES.pick_random().instantiate()
+	items_selection.menu_init(item_sort, items_moldures)
 
-func add_item_moldure(item):
-	pass
+func add_items_moldures():
+	for i in range(3):
+		var item_moldure = item_moldure_scene.instantiate()
+		item_moldure.number = i+1
+		items_moldures.append(item_moldure)
+		items_hud.add_child(item_moldure)
+	var initial_item_instance = _hero.initial_item_scene.instantiate()
+	add_item(initial_item_instance, "Slot1")
+
+func add_item(item, moldure_number):
+	match moldure_number:
+		"Slot1":
+			moldure_number = 0
+		"Slot2":
+			moldure_number = 1
+		"Slot3":
+			moldure_number = 2
+	var moldure = items_moldures[moldure_number]
+	moldure.initialize_item(item, items_spawn)
 
 func add_skill_moldure(skill, type):
 	var skill_add = skill_moldure.instantiate()

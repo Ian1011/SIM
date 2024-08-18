@@ -62,7 +62,7 @@ func update_position():
 
 func update_stats():
 	for sword in [sword1, sword2]:
-		sword._damage = _attack_damage
+		sword._damage = _attack_damage + (_attack_damage * Global.hero.buff_attack)
 		sword._attack_cooldown = _attack_cooldown
 		sword._level = _level
 		sword._size = _size

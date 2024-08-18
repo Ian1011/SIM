@@ -3,13 +3,18 @@ class_name Hero
 
 @export_category('Variables')
 @export var _level: int = 1
-@export var _level_experience: int = 0
+@export var _level_experience: int = 49
 @export var _level_max_experience: int = 50
 @export var _health: float = 100
 @export var _speed: float = 90
 
-var initial_skill = [preload("res://scenes/weapons/skull.tscn"), preload("res://scenes/weapons/sword.tscn"), preload("res://scenes/weapons/heart.tscn")]
-var initial_item = null
+# Stats Global
+var buff_attack: float = 0
+var speed_base = _speed
+
+
+var initial_skill = [preload("res://scenes/weapons/heart.tscn"), preload("res://scenes/weapons/thunder.tscn"), preload("res://scenes/weapons/cyclone.tscn")]
+var initial_item_scene = preload("res://scenes/items/speed.tscn")
 
 @export_category('Objects')
 @onready var camera = $Camera
@@ -17,6 +22,7 @@ var initial_item = null
 @onready var sprite = $Sprite2D
 @onready var attract_area = $AttractArea
 @onready var collect_area = $CollectArea
+@onready var collision_area = $Body
 
 var _health_max = _health
 var health_initial = _health_max
@@ -26,6 +32,7 @@ var _look_direction = Vector2(1, 0)
 func _ready():
 	Global.hero = self
 	control.start_score()
+
 
 func _physics_process(_delta):
 	var _direction: Vector2 = Input.get_vector(
@@ -44,9 +51,12 @@ func _physics_process(_delta):
 	move_and_slide()
 
 # Funções
+
 func add_skill(item, type):
 	Global.game.upgrade_character(item, type)
 
+func add_item(item, slot):
+	control.add_item(item, slot)
 
 #Health
 func _update_health(_damage: String, _points: int):

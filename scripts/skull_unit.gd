@@ -17,7 +17,7 @@ var is_attacking: bool = false
 var projectile = preload("res://scenes/weapons/skulls_utils/skull_ball.tscn")
 
 #Funções
-func _spawn_projetctile() -> void:
+func _spawn_projetctile():
 	if is_instance_valid(_target):
 		var _direction: Vector2 = global_position.direction_to(_target.global_position)
 		var projectile_instance = projectile.instantiate()
@@ -42,4 +42,3 @@ func _on_attack_timer_timeout():
 	_detection_area.set_deferred('monitoring', true)
 	is_attacking = false
 	
-

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh2kxpe0mf5av"
-path="res://.godot/imported/arrows.png-b1c3a4ded648549751c70b6336bb41dd.ctex"
+uid="uid://bqxtgep6r3fbh"
+path="res://.godot/imported/invincibility.png-a8270c8bd238cf6b1db2a0b2f8b328fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/arrows.png"
-dest_files=["res://.godot/imported/arrows.png-b1c3a4ded648549751c70b6336bb41dd.ctex"]
+source_file="res://sprites/items/icons/invincibility.png"
+dest_files=["res://.godot/imported/invincibility.png-a8270c8bd238cf6b1db2a0b2f8b328fc.ctex"]
 
 [params]
 

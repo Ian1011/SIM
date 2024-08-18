@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2lb0mksh6cpm"]
+
+[ext_resource type="Script" path="res://scripts/invincibility.gd" id="1_l0luw"]
+
+[node name="Invincibility" type="Node2D"]
+script = ExtResource("1_l0luw")
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

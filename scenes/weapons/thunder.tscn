@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf5xapc3g78oi"]
+
+[ext_resource type="Script" path="res://scripts/skills/thunder.gd" id="1_ftjir"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xdkl"]
+size = Vector2(937.5, 510.75)
+
+[node name="Thunder" type="Node2D" node_paths=PackedStringArray("_attack_timer")]
+script = ExtResource("1_ftjir")
+_attack_timer = NodePath("AttackTimer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.408, 1.31)
+region_enabled = true
+region_rect = Rect2(40, 6, 16, 18)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="DetectionLimit" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("RectangleShape2D_7xdkl")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

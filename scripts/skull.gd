@@ -63,7 +63,7 @@ func update_stats():
 	for i in [skull1, skull2, skull3]:
 		if i:
 			i._attack_cooldown = _attack_cooldown
-			i._attack_damage = _attack_damage
+			i._attack_damage = _attack_damage + (_attack_damage * Global.hero.buff_attack)
 
 func update_positions():
 	if skull1:

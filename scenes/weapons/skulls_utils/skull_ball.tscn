@@ -194,13 +194,11 @@ _data = {
 "explosion": SubResource("Animation_g811u")
 }
 
-[node name="SkullBall" type="Area2D" node_paths=PackedStringArray("_timer_delete", "_attack_timer", "_attack_area")]
+[node name="SkullBall" type="Area2D" node_paths=PackedStringArray("_timer_delete")]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_kukyd")
 _timer_delete = NodePath("TimerDelete")
-_attack_timer = NodePath("")
-_attack_area = NodePath("AttackArea")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)

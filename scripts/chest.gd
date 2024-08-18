@@ -1,11 +1,15 @@
 extends Area2D
+var target = null
 
+func collect():
+	if target is Hero:
+		$AnimationPlayer.play("open")
+		await $AnimationPlayer.animation_finished
+		item()
+		queue_free()
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func item():
+	target.control.sort_item()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	global_position = Vector2(199,-234)

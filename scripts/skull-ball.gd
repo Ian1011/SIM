@@ -3,13 +3,10 @@ extends Area2D
 @export_category("Variabels")
 @export var _damage: float
 @export var _move_speed: float = 300
-@export var _attack_cooldown: float = 0.5
 
 
 @export_category('Objects')
 @export var _timer_delete: Timer
-@export var _attack_timer: Timer
-@export var _attack_area: Area2D
 
 @onready var explosion_sprite = $AttackArea/SpriteExplosion
 @onready var explosion_sprite2 = $AttackArea/SpriteExplosion2
@@ -54,13 +51,9 @@ func _on_attack_area_body_entered(body):
 
 
 func _on_attack_area_body_exited(body):
-	if body is Enemy:
+	if body in enemies:
 		enemies.erase(body)
 
 func damage_area():
 	for body in enemies:
 		body._update_health('damage', _damage)
-
-
-
-

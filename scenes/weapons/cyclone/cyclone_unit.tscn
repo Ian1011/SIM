@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://cj72uk7oseur3"]
+
+[ext_resource type="Script" path="res://scripts/skills/cyclone_unit.gd" id="1_odw83"]
+[ext_resource type="Texture2D" uid="uid://wxhkaou4offp" path="res://sprites/weapons/cyclone.png" id="2_cbxk7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw3p7"]
+atlas = ExtResource("2_cbxk7")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4o7w"]
+atlas = ExtResource("2_cbxk7")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbh5o"]
+atlas = ExtResource("2_cbxk7")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t60q5"]
+atlas = ExtResource("2_cbxk7")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0d1kc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw3p7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4o7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbh5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t60q5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_amaro"]
+radius = 10.6945
+height = 41.7429
+
+[node name="CycloneUnit" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_odw83")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -1)
+sprite_frames = SubResource("SpriteFrames_0d1kc")
+autoplay = "default"
+frame_progress = 0.386771
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 1)
+rotation = 0.261799
+shape = SubResource("CapsuleShape2D_amaro")
+
+[node name="DeleteTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DeleteTimer" to="." method="_on_delete_timer_timeout"]

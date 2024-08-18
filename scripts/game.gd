@@ -12,7 +12,9 @@ var game_time = 0.0
 # Const
 var SKILLS_ACTIVES = {
 	"Skull":preload("res://scenes/weapons/skull.tscn"),
-	"Sword":preload("res://scenes/weapons/sword.tscn")
+	"Sword":preload("res://scenes/weapons/sword.tscn"),
+	"Thunder":preload("res://scenes/weapons/thunder.tscn"),
+	"Cyclone":preload("res://scenes/weapons/cyclone.tscn")
 }
 var SKILLS_PASSIVES = {
 	"Heart":preload("res://scenes/weapons/heart.tscn")

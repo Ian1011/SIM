@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=3 uid="uid://bd0gvbrwn06vq"]
+
+[ext_resource type="Script" path="res://scripts/skills/thunder_unit.gd" id="1_ibxg7"]
+[ext_resource type="Texture2D" uid="uid://bin67gom1d6jl" path="res://sprites/weapons/thunder.png" id="2_bp65d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pdc1x"]
+radius = 3.0
+
+[sub_resource type="Animation" id="Animation_7tktm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(10.2597, -0.234764, 7.82094, 68.0711)]
+}
+
+[sub_resource type="Animation" id="Animation_hho6w"]
+resource_name = "default"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(10.2597, -0.234764, 7.82094, 68.0711), Rect2(6.07799, 70.0328, 17.8106, 69.77), Rect2(52.5494, -0.285833, 20.5662, 68.0711), Rect2(100.637, -0.312244, 23.1731, 69.2298), Rect2(149.008, 0.252707, 20.2771, 64.5951), Rect2(91.6548, 78.041, 38.2357, 47.505)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"damage"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_1vlgw"]
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(12, 0, 5, 68), Rect2(7, 71, 16, 68), Rect2(53, 0, 20, 68), Rect2(101, 0, 23, 68), Rect2(146.511, -0.00453568, 24.2892, 65.5423)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"damage"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bpsdo"]
+_data = {
+"RESET": SubResource("Animation_7tktm"),
+"default": SubResource("Animation_hho6w"),
+"default2": SubResource("Animation_1vlgw")
+}
+
+[node name="ThunderUnit" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_ibxg7")
+
+[node name="Area" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pdc1x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+top_level = true
+position = Vector2(-4, -68)
+scale = Vector2(2, 2)
+texture = ExtResource("2_bp65d")
+region_enabled = true
+region_rect = Rect2(10.2597, -0.234764, 7.82094, 68.0711)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bpsdo")
+}
