@@ -16,6 +16,7 @@ var SKILLS_ACTIVES = {
 	"Thunder":preload("res://scenes/weapons/thunder.tscn"),
 	"Cyclone":preload("res://scenes/weapons/cyclone.tscn")
 }
+
 var SKILLS_PASSIVES = {
 	"Heart":preload("res://scenes/weapons/heart.tscn")
 }
@@ -28,6 +29,7 @@ func _ready():
 	
 func _process(delta):
 	game_time += delta
+	print(delta)
 
 #Funções
 func skill_upgrade():

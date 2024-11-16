@@ -6,7 +6,6 @@ var spawns = [{
 	'interval':1,
 	'start':0.0,
 	'end':1.5*60
-	
 },{
 	'scene':preload("res://scenes/enemies/howl.tscn"),
 	'timer':0.0,
